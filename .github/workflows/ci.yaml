@@ -29,7 +29,7 @@ jobs:
       - name: Install Poetry
         run: pip install poetry
       - name: Export requirements.txt as dependencies
-        run: poetry export -f requirements.txt -o requirements.txt
+        run: poetry export -f requirements.txt --without-hashes -o requirements.txt
       - uses: docker/login-action@v1
         with:
           username: myl7

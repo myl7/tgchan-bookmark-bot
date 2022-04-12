@@ -1,0 +1,41 @@
+name: CI with CD
+on:
+  push:
+    branches:
+      - main
+  release:
+    types:
+      - published
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: myl7/tgchan-bookmark-bot
+          tags: |
+            type=edge
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+          labels: |
+            org.opencontainers.image.authors=myl7 <myl@myl.moe>
+            org.opencontainers.image.documentation=https://github.com/myl7/tgchan-bookmark-bot#readme
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Export requirements.txt as dependencies
+        run: poetry export -f requirements.txt -o requirements.txt
+      - uses: docker/login-action@v1
+        with:
+          username: myl7
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}

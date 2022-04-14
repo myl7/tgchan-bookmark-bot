@@ -17,6 +17,13 @@ Config options are passed by either envs or dotenv
 
 ## Usage
 
+We will take Chrome bookmarks as example.
+First you need to *export* your bookmarks as [XBEL (XML Bookmark Exchange Language)](http://xbel.sourceforge.net/) file and *sync* the export with your current bookmarks frequently.
+We can use [floccus](https://floccus.org/), which is a free open source software under MPL-2.0 License, to do it.
+As a browser addon, It can export and sync your bookmarks in Chrome, Firefox and some other browsers, to Google Drive or any other WebDAV service like NextCloud.
+You can also specify the sync policy, which includes merging, push-only and pull-only.
+Here we can install the addon in Chrome, add a push-only sync to export bookmarks to Google Drive, share the file from Google Drive, use [this tool](https://sites.google.com/site/gdocs2direct/) to convert the share link to direct link, and now you got the required XBEL URL.
+
 Docker image `myl7/tgchan-bookmark-bot` is available in Docker Hub.
 Tag `edge` is bleeding edge build from CI and tag `latest` is latest release with a version.
 Semantic versioning is available so feel free to use tag `1`, `1.1` or `1.1.1`.

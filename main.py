@@ -63,7 +63,7 @@ def get_xbel():
     logging.debug(f'Got {len(bookmarks)} bookmarks')
     return [{
         'url': bookmark.attrib['href'],
-        'title': bookmark[0].text,
+        'title': bookmark[0].text if bookmark[0].text else '<no title>',
         'bid': int(bookmark.attrib['id'])
     } for bookmark in bookmarks]
 
@@ -111,6 +111,10 @@ def main():
                     send_msg(bookmark)
                     save_bookmark(cursor, bookmark)
                     logging.info(f'Sent and saved bookmark: {bookmark["title"]}')
+        except sqlite3.Error as e:
+            # Critical
+            logging.error(f'SQLite3 Error: {e}')
+            exit(1)
         except Exception as e:
             logging.error(f'Error: {e}')
         sleep(POLL_INTERVAL)

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tgchan-bookmark-bot"
-version = "0.1.0"
+version = "0.1.2"
 description = "After you save a page as bookmark, post it in the Telegram channel"
 authors = ["myl7 <myl@myl.moe>"]
 license = "Apache-2.0"

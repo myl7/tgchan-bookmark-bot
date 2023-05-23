@@ -7,7 +7,7 @@ license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-requests = "^2.27.1"
+requests = "^2.31.0"
 python-telegram-bot = "^13.11"
 python-dotenv = "^0.20.0"
 

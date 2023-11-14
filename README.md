@@ -1,5 +1,9 @@
 # tgchan-bookmark-bot
 
+**Archived since my core message stream is Mastodon now.**
+**While my current solution for the requirement is to paste the link manually, I plan to build a tool to transform XBEL to RSS/ActivityStream.**
+**The new tool should cover the functionality better.**
+
 After you save a page as bookmark, post it in the Telegram channel
 
 ## Config
